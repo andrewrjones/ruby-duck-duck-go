@@ -11,10 +11,11 @@ Rake::TestTask.new("test") { |t|
 
 begin
   require 'rcov/rcovtask'
-  Rcov::RcovTask.new do |test|
-    test.libs << 'test'
-    test.pattern = 'test/tc_*.rb'
-    test.verbose = true
+  Rcov::RcovTask.new do |rcov|
+    rcov.libs << 'test'
+    rcov.pattern = 'test/tc_*.rb'
+    rcov.verbose = true
+    rcov.rcov_opts << '--exclude gems'
   end
 rescue LoadError
   task :rcov do
@@ -30,5 +31,4 @@ Rake::RDocTask.new do |rdoc|
   rdoc.title = "duck-duck-go #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
-  #rdoc.rdoc_files.include('script/*.rb')
 end
