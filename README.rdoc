@@ -13,7 +13,7 @@ Example:
 
 = Source code
 
-http://github.com/andrewrjones/ruby-duck-duck-go/
+http://github.com/andrewrjones/ruby-duck-duck-go
 
 = License
 
