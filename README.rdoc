@@ -1,0 +1,20 @@
+This is a Ruby library to access the DuckDuckGo Zero Click Info API. 
+
+= How to install
+
+TODO
+
+= How to use
+
+Example:
+  
+  require "duck_duck_go"
+
+
+= Source code
+
+http://github.com/andrewrjones/ruby-duck-duck-go/
+
+= License
+
+This code is available under the MIT License. See the LICENSE file for more details.
