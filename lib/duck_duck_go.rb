@@ -28,7 +28,7 @@ module DuckDuckGo
       else
         @url = API_URL
       end
-      @http = HTTPClient.new(nil, http_agent_name)
+      @http = HTTPClient.new(:agent_name => http_agent_name)
     end
     
     # Run a query against Duck Duck Go
