@@ -17,4 +17,16 @@ class TestLive < Test::Unit::TestCase
     assert_equal("Wikipedia", zci.abstract_source)
     assert_equal("article", zci.type)
   end
+  
+  # test using http
+  def test_live_http
+    
+    ddg = DuckDuckGo.new(nil, true)
+    zci = ddg.zci('stephen fry')
+    
+    assert_instance_of(DuckDuckGo::ZeroClickInfo, zci)
+    assert_equal("Stephen Fry", zci.heading)
+    assert_equal("Wikipedia", zci.abstract_source)
+    assert_equal("article", zci.type)
+  end
 end
