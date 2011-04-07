@@ -15,7 +15,7 @@ module DuckDuckGo
       'E' => 'exclusive',
     }
     
-    attr_reader :abstract, :abstract_text, :abstract_source, :abstract_url, :image, :heading, :answer, :answer_type, :definition, :definition_source, :definition_url, :type, :results, :related_topics
+    attr_reader :abstract, :abstract_text, :abstract_source, :abstract_url, :image, :heading, :answer, :answer_type, :definition, :definition_source, :definition_url, :type, :type_long, :results, :related_topics
     
     # Representes a DDG Zero Click Info result
     def initialize(abstract = nil, abstract_text = nil, abstract_source = nil, abstract_url = nil, image = nil, heading = nil, answer = nil, answer_type = nil, definition = nil, definition_source = nil, definition_url = nil, type = nil, results = nil, related_topics = nil)
@@ -30,7 +30,8 @@ module DuckDuckGo
       @definition = definition
       @definition_source = definition_source
       @definition_url = definition_url
-      @type = type
+      @type = type unless type.nil?
+      @type_long = TYPE_DEFINITIONS[type]
       @results = results
       @related_topics = related_topics
     end
@@ -49,7 +50,7 @@ module DuckDuckGo
       definition = result['Definition'] unless result['Definition'].empty?
       definition_source = result['DefinitionSource'] unless result['DefinitionSource'].empty?
       definition_url = URI.parse(result['DefinitionURL']) unless result['DefinitionURL'].empty?
-      type = TYPE_DEFINITIONS[result['Type']] unless result['Type'].empty?
+      type = result['Type'] unless result['Type'].empty?
       
       if result['Results']
         results = Array.new

@@ -15,7 +15,7 @@ class TestLive < Test::Unit::TestCase
     assert_instance_of(DuckDuckGo::ZeroClickInfo, zci)
     assert_equal("Stephen Fry", zci.heading)
     assert_equal("Wikipedia", zci.abstract_source)
-    assert_equal("article", zci.type)
+    assert_equal("A", zci.type)
   end
   
   # test using http
@@ -27,6 +27,6 @@ class TestLive < Test::Unit::TestCase
     assert_instance_of(DuckDuckGo::ZeroClickInfo, zci)
     assert_equal("Stephen Fry", zci.heading)
     assert_equal("Wikipedia", zci.abstract_source)
-    assert_equal("article", zci.type)
+    assert_equal("A", zci.type)
   end
 end
