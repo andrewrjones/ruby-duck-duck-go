@@ -29,4 +29,17 @@ class TestLive < Test::Unit::TestCase
     assert_equal("Wikipedia", zci.abstract_source)
     assert_equal("A", zci.type)
   end
+  
+  # questions do not currently get a response on the api
+  def test_answer
+    ddg = DuckDuckGo.new
+    zci = ddg.zci('age of obama')
+    
+    assert_nil(zci.abstract)
+    assert_nil(zci.answer)
+    assert_nil(zci.definition)
+    assert_nil(zci.heading)
+    assert_equal(0, zci.related_topics.size)
+    assert_equal(0, zci.results.size)
+  end
 end
