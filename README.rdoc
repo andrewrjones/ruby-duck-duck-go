@@ -23,7 +23,7 @@ Depending on the result type, the +related_topics+ hash will contain slightly di
 
 For most queries, <code>related_topics["_"]</code> contains an array of the related topics.
 
-For a disambiguation query, <code>related_topics["_"]</code> contains the related topics, where as <code>related_topics["Topic"]<code> contains the disambiguation results. For example, searching for _apple_, you will find a <code>related_topics["Compaines"]</code> entry containing <i>Apple Inc</i> and <i>Apple Corp</i>, amongst others.
+For a disambiguation query, <code>related_topics["_"]</code> contains the related topics, where as <code>related_topics["Topic"]</code> contains the disambiguation results. For example, searching for _apple_, you will find a <code>related_topics["Compaines"]</code> entry containing <i>Apple Inc</i> and <i>Apple Corp</i>, amongst others.
 
 = Issues
 
