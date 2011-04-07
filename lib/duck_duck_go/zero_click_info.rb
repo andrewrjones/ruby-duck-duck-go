@@ -60,9 +60,18 @@ module DuckDuckGo
       end
       
       if result['RelatedTopics']
-        related_topics = Array.new
-        result['RelatedTopics'].each do |link_result|
-          related_topics << DuckDuckGo::Link.by(link_result)
+        related_topics = Hash.new
+        result['RelatedTopics'].each do |t|
+          if t['Topics']
+            topics = Array.new
+            t['Topics'].each do |link_result|
+              topics << DuckDuckGo::Link.by(link_result)
+            end
+            related_topics[t['Name']] = topics
+          else
+            related_topics['_'] = Array.new if related_topics['_'].nil?
+            related_topics['_'] << DuckDuckGo::Link.by(t)
+          end
         end
       end
       
