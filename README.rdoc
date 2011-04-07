@@ -4,20 +4,41 @@ This is a Ruby library to access the DuckDuckGo Zero Click Info API.
 
 TODO
 
-= How to use
-
-Example:
+= Synopsis
   
   require "duck_duck_go"
+  
+  ddg = DuckDuckGo.new
+  zci = ddg.zeroclickinfo("Stephen Fry") # ZeroClickInfo object
+  
+  zci.heading # Stephen Fry
+  zci.abstract_text # Stephen John Fry is an English actor, screenwriter, author, playwright, ...
+  zci.related_topics["_"][0].text # Stephen Fry (cricketer) ...
+  
+= Description
 
-= TODO
+This library accesses the DuckDuckGo Zero Click Info API[http://duckduckgo.com/api.html], and returns an DuckDuckGo::ZeroClickInfo object containing the result.
 
-Just docs...
+Depending on the result type, the +related_topics+ hash will contain slightly different results.
+
+For most queries, <code>related_topics["_"]</code> contains an array of the related topics.
+
+For a disambiguation query, <code>related_topics["_"]</code> contains the related topics, where as <code>related_topics["Topic"]<code> contains the disambiguation results. For example, searching for _apple_, you will find a <code>related_topics["Compaines"]</code> entry containing <i>Apple Inc</i> and <i>Apple Corp</i>, amongst others.
+
+= Issues
+
+http://github.com/andrewrjones/ruby-duck-duck-go/issues
 
 = Source code
 
 http://github.com/andrewrjones/ruby-duck-duck-go
 
-= License
+= Credits
+
+API and design heavily influenced by WWW::DuckDuckGo[http://search.cpan.org/~getty/WWW-DuckDuckGo-0.006/lib/WWW/DuckDuckGo/ZeroClickInfo.pm], the equivalent Perl module.
+
+= Copyright and License
+
+Copyright (c) 2011 Andrew Jones (http://andrew-jones.com)
 
 This code is available under the MIT License. See the LICENSE file for more details.
