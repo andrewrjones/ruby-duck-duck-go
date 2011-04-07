@@ -1,7 +1,5 @@
 This is a Ruby library to access the DuckDuckGo Zero Click Info API.
 
-*NOTE:* Still a work in progress. Not yet ready for use.
-
 = How to install
 
 TODO
@@ -14,7 +12,7 @@ Example:
 
 = TODO
 
-Handle disambiguation queries (i.e. http://duckduckgo.com/?q=apple)
+Just docs...
 
 = Source code
 
