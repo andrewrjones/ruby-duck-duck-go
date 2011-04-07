@@ -483,4 +483,299 @@ class TestZCI < Test::Unit::TestCase
     assert_equal(2, zci.related_topics["Companies"].size)
     assert_equal("Apple Inc., a consumer electronics and software company", zci.related_topics["Companies"][0].text)
   end
+  
+  def test_zci_category
+    
+    data = {"AbstractSource"=>"Wikipedia",
+ "Answer"=>"",
+ "Definition"=>"",
+ "Results"=>[],
+ "AnswerType"=>"",
+ "Abstract"=>"",
+ "Heading"=>"The Simpsons characters",
+ "RelatedTopics"=>
+  [{"Text"=>
+     "Abraham Simpson - Abraham Jay \"Abe\" Simpson (voiced by Dan Castellaneta), known near universally simply as Grampa, is a fictional character in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/7b1c968b.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Abraham_Simpson\">Abraham Simpson</a><br>Abraham Jay \"Abe\" Simpson (voiced by Dan Castellaneta), known near universally simply as Grampa, is a fictional character in the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Abraham_Simpson"},
+   {"Text"=>
+     "Apu Nahasapeemapetilon - Apu Nahasapeemapetilon, Ph.D. is a character in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/3dfa3dc3.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Apu_Nahasapeemapetilon\">Apu Nahasapeemapetilon</a><br>Apu Nahasapeemapetilon, Ph.D. is a character in the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Apu_Nahasapeemapetilon"},
+   {"Text"=>
+     "Barney Gumble - Barnard \"Barney\" Gumble is a fictional character on the American animated sitcom The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/39ce98c0.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Barney_Gumble\">Barney Gumble</a><br>Barnard \"Barney\" Gumble is a fictional character on the American animated sitcom <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Barney_Gumble"},
+   {"Text"=>
+     "Bart Simpson - Bartholomew JoJo \"Bart\" Simpson is a fictional character in the animated television series The Simpsons and part of the eponymous family.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/62a07d9e.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Bart_Simpson\">Bart Simpson</a><br>Bartholomew JoJo \"Bart\" Simpson is a fictional character in the animated television series <i>The Simpsons</i> and part of the eponymous family.",
+    "FirstURL"=>"http://duckduckgo.com/Bart_Simpson"},
+   {"Text"=>
+     "Carl Carlson - Carl Carlson, usually known simply as Carl, is a supporting character in the animated television series The Simpsons voiced by Hank Azaria.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/f572e9ae.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Carl_Carlson\">Carl Carlson</a><br>Carl Carlson, usually known simply as Carl, is a supporting character in the animated television series <i>The Simpsons</i> voiced by Hank Azaria.",
+    "FirstURL"=>"http://duckduckgo.com/Carl_Carlson"},
+   {"Text"=>
+     "Clancy Wiggum - Chief Clancy Wiggum is a fictional character from the animated television series The Simpsons, voiced by Hank Azaria.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/f0eb79ee.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Clancy_Wiggum\">Clancy Wiggum</a><br>Chief Clancy Wiggum is a fictional character from the animated television series <i>The Simpsons</i>, voiced by Hank Azaria.",
+    "FirstURL"=>"http://duckduckgo.com/Clancy_Wiggum"},
+   {"Text"=>
+     "Cletus Spuckler - Cletus Delroy Spuckler is a recurring character in the Fox animated series, The Simpsons, and is voiced by Hank Azaria.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/4d663a85.gif"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Cletus_Spuckler\">Cletus Spuckler</a><br>Cletus Delroy Spuckler is a recurring character in the Fox animated series, <i>The Simpsons</i>, and is voiced by Hank Azaria.",
+    "FirstURL"=>"http://duckduckgo.com/Cletus_Spuckler"},
+   {"Text"=>
+     "Comic Book Guy - Jeff Albertson, best known as the Comic Book Guy, is a recurring fictional character in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/911ab519.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Comic_Book_Guy\">Comic Book Guy</a><br>Jeff Albertson, best known as the Comic Book Guy, is a recurring fictional character in the animated television series <i>The Simpsons.</i>",
+    "FirstURL"=>"http://duckduckgo.com/Comic_Book_Guy"},
+   {"Text"=>
+     "Edna Krabappel - Edna Krabappel is a fictional character from the animated TV series The Simpsons, voiced by Marcia Wallace.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/1bdfff5e.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Edna_Krabappel\">Edna Krabappel</a><br>Edna Krabappel is a fictional character from the animated TV series <i>The Simpsons</i>, voiced by Marcia Wallace.",
+    "FirstURL"=>"http://duckduckgo.com/Edna_Krabappel"},
+   {"Text"=>
+     "Fat Tony - Fat Tony is a recurring character in the animated sitcom The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/a4583d66.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Fat_Tony\">Fat Tony</a><br>Fat Tony is a recurring character in the animated sitcom <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Fat_Tony"},
+   {"Text"=>
+     "Groundskeeper Willie - Groundskeeper Willie born William Mcdougal  is a recurring character on The Simpsons, voiced by Dan Castellaneta.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/f845601f.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Groundskeeper_Willie\">Groundskeeper Willie</a><br>Groundskeeper Willie born William Mcdougal  is a recurring character on <i>The Simpsons</i>, voiced by Dan Castellaneta.",
+    "FirstURL"=>"http://duckduckgo.com/Groundskeeper_Willie"},
+   {"Text"=>
+     "Hans Moleman - Hans Moleman is a recurring character in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/9f651728.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Hans_Moleman\">Hans Moleman</a><br>Hans Moleman is a recurring character in the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Hans_Moleman"},
+   {"Text"=>
+     "Homer Simpson - Homer Jay Simpson is a fictional main character in the animated television series The Simpsons and the father of the eponymous family.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/bf0eb228.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Homer_Simpson\">Homer Simpson</a><br>Homer Jay Simpson is a fictional main character in the animated television series <i>The Simpsons</i> and the father of the eponymous family.",
+    "FirstURL"=>"http://duckduckgo.com/Homer_Simpson"},
+   {"Text"=>
+     "Joe Quimby - Mayor Joseph \"Joe\" Quimby, nicknamed \"Diamond Joe,\" is a recurring character from the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/93d80e95.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Joe_Quimby\">Joe Quimby</a><br>Mayor Joseph \"Joe\" Quimby, nicknamed \"Diamond Joe,\" is a recurring character from the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Joe_Quimby"},
+   {"Text"=>
+     "Julius Hibbert - Dr. Julius M. Hibbert, M.D., is a recurring character on the animated series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/c9497b7e.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Julius_Hibbert\">Julius Hibbert</a><br>Dr. Julius M. Hibbert, M.D., is a recurring character on the animated series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Julius_Hibbert"},
+   {"Text"=>
+     "Kang and Kodos - Kang and Kodos are a duo of recurring characters in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/be84f45b.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Kang_and_Kodos\">Kang and Kodos</a><br>Kang and Kodos are a duo of recurring characters in the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Kang_and_Kodos"},
+   {"Text"=>
+     "Kent Brockman - Kent Brockman is a fictional character in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/b6c36d00.jpg"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Kent_Brockman\">Kent Brockman</a><br>Kent Brockman is a fictional character in the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Kent_Brockman"},
+   {"Text"=>
+     "Krusty the Clown - Herschel Shmoikel Pinchas Yerucham Krustofski, better known by the stage name Krusty the Clown, is a fictional character who suffers bipolarity in the animated television series The Simp...",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/caa07f01.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Krusty_the_Clown\">Krusty the Clown</a><br>Herschel Shmoikel Pinchas Yerucham Krustofski, better known by the stage name Krusty the Clown, is a fictional character who suffers bipolarity in the animated television series The Simp...",
+    "FirstURL"=>"http://duckduckgo.com/Krusty_the_Clown"},
+   {"Text"=>
+     "Lenny Leonard - Lenford Leonard, MPhys  usually known simply as Lenny, is a supporting character in the Fox animated series The Simpsons, and is voiced by Harry Shearer.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/76575c43.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Lenny_Leonard\">Lenny Leonard</a><br>Lenford Leonard, MPhys  usually known simply as Lenny, is a supporting character in the Fox animated series <i>The Simpsons</i>, and is voiced by Harry Shearer.",
+    "FirstURL"=>"http://duckduckgo.com/Lenny_Leonard"},
+   {"Text"=>
+     "Lionel Hutz - Lionel Hutz is a recurring character from the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/94d72e52.jpg"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Lionel_Hutz\">Lionel Hutz</a><br>Lionel Hutz is a recurring character from the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Lionel_Hutz"},
+   {"Text"=>
+     "Lisa Simpson - Lisa Marie Simpson is a fictional main character in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/0c6d3b53.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Lisa_Simpson\">Lisa Simpson</a><br>Lisa Marie Simpson is a fictional main character in the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Lisa_Simpson"},
+   {"Text"=>
+     "Maggie Simpson - Margaret \"Maggie\" Simpson is a fictional character in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/c018dead.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Maggie_Simpson\">Maggie Simpson</a><br>Margaret \"Maggie\" Simpson is a fictional character in the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Maggie_Simpson"},
+   {"Text"=>
+     "Marge Simpson - Marjorie \"Marge\" Simpson is a fictional main character in the animated television series The Simpsons and the matriarch of the eponymous family.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/b75bd67d.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Marge_Simpson\">Marge Simpson</a><br>Marjorie \"Marge\" Simpson is a fictional main character in the animated television series <i>The Simpsons</i> and the matriarch of the eponymous family.",
+    "FirstURL"=>"http://duckduckgo.com/Marge_Simpson"},
+   {"Text"=>
+     "Martin Prince - Martin Prince, Jr. is a recurring character in the Fox animated series, The Simpsons, and is voiced by Russi Taylor.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/eb68975c.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Martin_Prince\">Martin Prince</a><br>Martin Prince, Jr. is a recurring character in the Fox animated series, <i>The Simpsons</i>, and is voiced by Russi Taylor.",
+    "FirstURL"=>"http://duckduckgo.com/Martin_Prince"},
+   {"Text"=>
+     "Milhouse Van Houten - Milhouse Mussolini Van Houten is a fictional character featured in the animated television series The Simpsons, voiced by Pamela Hayden.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/c1923cb1.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Milhouse_Van_Houten\">Milhouse Van Houten</a><br>Milhouse Mussolini Van Houten is a fictional character featured in the animated television series <i>The Simpsons</i>, voiced by Pamela Hayden.",
+    "FirstURL"=>"http://duckduckgo.com/Milhouse_Van_Houten"},
+   {"Text"=>
+     "Moe Szyslak - Momar \"Moe\" Szyslak () is a fictional character in the American animated television series, The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/388580ad.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Moe_Szyslak\">Moe Szyslak</a><br>Momar \"Moe\" Szyslak () is a fictional character in the American animated television series, <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Moe_Szyslak"},
+   {"Text"=>
+     "Mona Simpson (The Simpsons) - Mona J. Simpson is a recurring fictional character in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/ba6285fb.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Mona_Simpson_(The_Simpsons)\">Mona Simpson (The Simpsons)</a><br>Mona J. Simpson is a recurring fictional character in the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Mona_Simpson_(The_Simpsons)"},
+   {"Text"=>
+     "Mr. Burns - Charles Montgomery Plantagenet Schicklgruber\"Monty\" Burns, usually referred to as Mr. Burns, is a recurring fictional character in the animated television series The Simpsons,...",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/cf311517.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Mr._Burns\">Mr. Burns</a><br>Charles Montgomery Plantagenet Schicklgruber\"Monty\" Burns, usually referred to as Mr. Burns, is a recurring fictional character in the animated television series <i>The Simpsons</i>,...",
+    "FirstURL"=>"http://duckduckgo.com/Mr._Burns"},
+   {"Text"=>
+     "Ned Flanders - Nedward \"Ned\" Flanders is a recurring fictional character in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/e66f380d.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Ned_Flanders\">Ned Flanders</a><br>Nedward \"Ned\" Flanders is a recurring fictional character in the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Ned_Flanders"},
+   {"Text"=>
+     "Nelson Muntz - Nelson Mandela Muntz is a fictional character from the animated TV series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/23702790.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Nelson_Muntz\">Nelson Muntz</a><br>Nelson Mandela Muntz is a fictional character from the animated TV series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Nelson_Muntz"},
+   {"Text"=>
+     "Nick Riviera - Dr. Nick Riviera, M.D. is a fictional character on the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/db757c91.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Nick_Riviera\">Nick Riviera</a><br>Dr. Nick Riviera, M.D. is a fictional character on the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Nick_Riviera"},
+   {"Text"=>
+     "Otto Mann - Otto Mann is a fictional character on the animated TV series The Simpsons, voiced by Harry Shearer.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/9ba5c930.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Otto_Mann\">Otto Mann</a><br>Otto Mann is a fictional character on the animated TV series <i>The Simpsons</i>, voiced by Harry Shearer.",
+    "FirstURL"=>"http://duckduckgo.com/Otto_Mann"},
+   {"Text"=>
+     "Patty and Selma Bouvier - Patty and Selma Bouvier () are fictional twins in the Fox Broadcasting animated series, The Simpsons, and are voiced by Julie Kavner.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/9f1ecf46.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Patty_and_Selma_Bouvier\">Patty and Selma Bouvier</a><br>Patty and Selma Bouvier () are fictional twins in the Fox Broadcasting animated series, <i>The Simpsons</i>, and are voiced by Julie Kavner.",
+    "FirstURL"=>"http://duckduckgo.com/Patty_and_Selma_Bouvier"},
+   {"Text"=>
+     "Professor Frink - Professor John Nerdelbaum Frink, Jr. is a recurring character in the American animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/c9dc0e13.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Professor_Frink\">Professor Frink</a><br>Professor John Nerdelbaum Frink, Jr. is a recurring character in the American animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Professor_Frink"},
+   {"Text"=>
+     "Ralph Wiggum - Ralph Wiggum is a recurring fictional character on the animated series The Simpsons, voiced by Nancy Cartwright.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/2f9c97eb.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Ralph_Wiggum\">Ralph Wiggum</a><br>Ralph Wiggum is a recurring fictional character on the animated series <i>The Simpsons</i>, voiced by Nancy Cartwright.",
+    "FirstURL"=>"http://duckduckgo.com/Ralph_Wiggum"},
+   {"Text"=>
+     "Reverend Timothy Lovejoy - The Reverend Timothy Lovejoy is a recurring character in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/5359e785.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Reverend_Timothy_Lovejoy\">Reverend Timothy Lovejoy</a><br>The Reverend Timothy Lovejoy is a recurring character in the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Reverend_Timothy_Lovejoy"},
+   {"Text"=>
+     "Santa's Little Helper - Santa's Little Helper is a fictional dog.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/6825f3f5.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Santa's_Little_Helper\">Santa's Little Helper</a><br>Santa's Little Helper is a fictional dog.",
+    "FirstURL"=>"http://duckduckgo.com/Santa's_Little_Helper"},
+   {"Text"=>
+     "Seymour Skinner - W. Seymour Skinner (born Armin Tamzarian) is a fictional character on the animated sitcom The Simpsons who is voiced by Harry Shearer.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/785a66ec.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Seymour_Skinner\">Seymour Skinner</a><br>W. Seymour Skinner (born Armin Tamzarian) is a fictional character on the animated sitcom <i>The Simpsons</i> who is voiced by Harry Shearer.",
+    "FirstURL"=>"http://duckduckgo.com/Seymour_Skinner"},
+   {"Text"=>
+     "Sideshow Bob - Robert Underdunk-Terwilliger, better known by his stage name Sideshow Bob, is a recurring character in the animated television series The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/922b6a1c.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Sideshow_Bob\">Sideshow Bob</a><br>Robert Underdunk-Terwilliger, better known by his stage name Sideshow Bob, is a recurring character in the animated television series <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Sideshow_Bob"},
+   {"Text"=>
+     "Snowball (The Simpsons) - The name Snowball refers to five fictional cats that have been owned by the Simpson family in the TV show The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/6a833a5a.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Snowball_(The_Simpsons)\">Snowball (The Simpsons)</a><br>The name Snowball refers to five fictional cats that have been owned by the Simpson family in the TV show <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Snowball_(The_Simpsons)"},
+   {"Text"=>
+     "The Itchy & Scratchy Show - The Itchy & Scratchy Show is a fictional animated television series from The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/d8a3a294.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/The_Itchy_%26_Scratchy_Show\">The Itchy & Scratchy Show</a><br><i>The Itchy & Scratchy Show</i> is a fictional animated television series from <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/The_Itchy_%26_Scratchy_Show"},
+   {"Text"=>
+     "Troy McClure - Troy McClure is a fictional character in the American animated sitcom The Simpsons.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/20433a15.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Troy_McClure\">Troy McClure</a><br>Troy McClure is a fictional character in the American animated sitcom <i>The Simpsons</i>.",
+    "FirstURL"=>"http://duckduckgo.com/Troy_McClure"},
+   {"Text"=>
+     "Waylon Smithers - Waylon Smithers, Jr. usually referred to as Smithers is a recurring fictional character in the animated series The Simpsons, who is voiced by Harry Shearer.",
+    "Icon"=>{"URL"=>"http://i.duck.co/i/12f25a94.png"},
+    "Result"=>
+     "<a href=\"http://duckduckgo.com/Waylon_Smithers\">Waylon Smithers</a><br>Waylon Smithers, Jr. usually referred to as Smithers is a recurring fictional character in the animated series <i>The Simpsons</i>, who is voiced by Harry Shearer.",
+    "FirstURL"=>"http://duckduckgo.com/Waylon_Smithers"}],
+ "AbstractURL"=>"http://en.wikipedia.org/wiki/The_Simpsons_characters",
+ "Image"=>"",
+ "DefinitionURL"=>"",
+ "DefinitionSource"=>"",
+ "AbstractText"=>"",
+ "Type"=>"C"}
+
+    zci = DuckDuckGo::ZeroClickInfo.by(data)
+    
+    assert_equal("The Simpsons characters", zci.heading)
+    assert_equal("Wikipedia", zci.abstract_source)
+    assert_nil(zci.image)
+    assert_nil(zci.abstract_text)
+    assert_nil(zci.definition_source)
+    assert_nil(zci.definition_url)
+    assert_nil(zci.answer_type)
+    assert_equal("C", zci.type)
+    assert_equal("category", zci.type_long)
+    assert_nil(zci.answer)
+    assert_instance_of(URI::HTTP, zci.abstract_url)
+    assert_equal('en.wikipedia.org', zci.abstract_url.host)
+    assert_equal(0, zci.results.size)
+    assert_equal(1, zci.related_topics.size)
+    assert_equal(43, zci.related_topics["_"].size)
+    assert_equal("Abraham Simpson - Abraham Jay \"Abe\" Simpson (voiced by Dan Castellaneta), known near universally simply as Grampa, is a fictional character in the animated television series The Simpsons.", zci.related_topics["_"][0].text)
+  end
 end
