@@ -15,7 +15,7 @@ begin
     gem.name = "duck-duck-go"
     gem.summary = %Q{Access the DuckDuckGo Zero Click Info API}
     gem.description = %Q{A Ruby library to access the DuckDuckGo Zero Click Info API.}
-    gem.email = "andrwe@arjones.co.uk"
+    gem.email = "andrew@arjones.co.uk"
     gem.homepage = "https://github.com/andrewrjones/ruby-duck-duck-go"
     gem.authors = ["andrewrjones"]
     gem.add_dependency('httpclient')
