@@ -20,6 +20,7 @@ begin
     gem.authors = ["andrewrjones"]
     gem.add_dependency('httpclient')
     gem.add_dependency('json')
+    gem.files.exclude 'scripts'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
