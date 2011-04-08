@@ -10,6 +10,24 @@ Rake::TestTask.new("test") { |t|
 }
 
 begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "duck-duck-go"
+    gem.summary = %Q{Access the DuckDuckGo Zero Click Info API}
+    gem.description = %Q{A Ruby library to access the DuckDuckGo Zero Click Info API.}
+    gem.email = "andrwe@arjones.co.uk"
+    gem.homepage = "https://github.com/andrewrjones/ruby-duck-duck-go"
+    gem.authors = ["andrewrjones"]
+    gem.add_dependency('httpclient')
+    gem.add_dependency('json')
+    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+end
+
+begin
   require 'rcov/rcovtask'
   Rcov::RcovTask.new do |rcov|
     rcov.libs << 'test'

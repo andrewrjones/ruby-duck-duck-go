@@ -2,7 +2,7 @@ This is a Ruby library to access the DuckDuckGo Zero Click Info API.
 
 = How to install
 
-TODO
+  gem install duck-duck-go
 
 = Synopsis
   
