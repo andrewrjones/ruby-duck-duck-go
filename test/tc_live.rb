@@ -30,6 +30,23 @@ class TestLive < Test::Unit::TestCase
     assert_equal("A", zci.type)
   end
   
+  def test_skip_disambiguation
+    ddg = DuckDuckGo.new(nil, true)
+    zci = ddg.zci('Bill Gates')
+    
+    assert_instance_of(DuckDuckGo::ZeroClickInfo, zci)
+    assert_equal("D", zci.type)
+    
+    sleep(5)
+    
+    zci = ddg.zci('Bill Gates', true)
+    
+    assert_instance_of(DuckDuckGo::ZeroClickInfo, zci)
+    assert_equal("Bill Gates", zci.heading)
+    assert_equal("Wikipedia", zci.abstract_source)
+    assert_equal("A", zci.type)
+  end
+  
   # questions do not currently get a response on the api
   def test_answer
     ddg = DuckDuckGo.new

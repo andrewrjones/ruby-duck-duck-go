@@ -1,3 +1,6 @@
+1.1.0 13-04-2011
+  - Support for skip_disambiguation queries
+
 1.0.2 08-04-2011
   - Add CHANGES file
 

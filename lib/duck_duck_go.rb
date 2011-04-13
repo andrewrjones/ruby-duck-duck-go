@@ -33,8 +33,16 @@ module DuckDuckGo
     
     # Run a query against Duck Duck Go
     # Returns an instance of DuckDuckGo::ZeroClickInfo
-    def zeroclickinfo(query)
-      data = @http.get_content(@url, { 'q' => query, 'o' => 'json' })
+    def zeroclickinfo(query, skip_disambiguation = false)
+      args = {
+        'q' => query,
+        'o' => 'json'
+      }
+      if(skip_disambiguation)
+        args['d'] = 1
+      end
+      
+      data = @http.get_content(@url, args)
   
       # parse the JSON and return an instance
       # of the ZeroClickInfo class
