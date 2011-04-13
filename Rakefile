@@ -20,7 +20,6 @@ begin
     gem.authors = ["andrewrjones"]
     gem.add_dependency('httpclient')
     gem.add_dependency('json')
-    gem.files.exclude 'scripts'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -51,4 +50,38 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('LICENSE')
   rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+# dumps out the result of the query, in JSON and Ruby
+# used during development
+task :search_dump do
+  require 'rubygems'
+  require 'httpclient'
+  require 'json'
+  require 'pp'
+  
+  unless ENV.include?("query")
+    raise "usage: rake search_dump query=___"
+  end
+  
+  args = {
+    'q' => ENV['query'],
+    'o' => 'json'
+  }
+  if ENV.include?("skip_disambiguation")
+    args['d'] = 1
+  end
+  
+  
+  http = HTTPClient.new
+  json = http.get_content('http://api.duckduckgo.com/', args)
+  ruby = JSON.parse(json)
+  
+  puts 'JSON'
+  puts '----'
+  puts json
+  puts
+  puts 'Ruby'
+  puts '----'
+  pp ruby
 end
