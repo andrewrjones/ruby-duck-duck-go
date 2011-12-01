@@ -10,10 +10,10 @@ class TestLive < Test::Unit::TestCase
   def test_live
     
     ddg = DuckDuckGo.new(nil, false)
-    zci = ddg.zci('stephen fry')
-    
+    zci = ddg.zci('kelly jones')
+
     assert_instance_of(DuckDuckGo::ZeroClickInfo, zci)
-    assert_equal("Stephen Fry", zci.heading)
+    assert_equal("Kelly Jones", zci.heading)
     assert_equal("Wikipedia", zci.abstract_source)
     assert_equal("A", zci.type)
   end
@@ -22,10 +22,10 @@ class TestLive < Test::Unit::TestCase
   def test_live_http
     
     ddg = DuckDuckGo.new(nil, true)
-    zci = ddg.zci('stephen fry')
-    
+    zci = ddg.zci('kelly jones')
+
     assert_instance_of(DuckDuckGo::ZeroClickInfo, zci)
-    assert_equal("Stephen Fry", zci.heading)
+    assert_equal("Kelly Jones", zci.heading)
     assert_equal("Wikipedia", zci.abstract_source)
     assert_equal("A", zci.type)
   end
