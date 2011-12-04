@@ -1,3 +1,6 @@
+1.1.1 03-12-2011
+  - Fix live tests after DDG results changed
+
 1.1.0 13-04-2011
   - Support for skip_disambiguation queries
 
