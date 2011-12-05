@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{duck-duck-go}
-  s.version = "1.1.0"
+  s.version = "1.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["andrewrjones"]
-  s.date = %q{2011-04-13}
+  s.date = %q{2011-12-05}
   s.description = %q{A Ruby library to access the DuckDuckGo Zero Click Info API.}
   s.email = %q{andrew@arjones.co.uk}
   s.extra_rdoc_files = [
