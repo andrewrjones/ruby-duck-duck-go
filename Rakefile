@@ -52,6 +52,12 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
+desc "Run cane to check quality metrics"
+task :quality do
+  puts `cane --abc-max 10 --gte coverage/covered_percent,99`
+  exit $?.exitstatus unless $?.exitstatus == 0
+end
+
 # dumps out the result of the query, in JSON and Ruby
 # used during development
 task :search_dump do
