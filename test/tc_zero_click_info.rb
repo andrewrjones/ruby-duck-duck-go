@@ -799,7 +799,7 @@ class TestZCI < Test::Unit::TestCase
  "AbstractURL"=>"http://en.wikipedia.org/wiki/Lorem_Ipsum",
  "Image"=>"",
  "DefinitionURL"=>
-  "http://www.thefreedictionary.com/_/search.aspx?pid=aff18&word=lorem%2520ipsum",
+  "http://www.merriam-webster.com/dictionary/lorem ipsum",
  "DefinitionSource"=>"TheFreeDictionary",
  "AbstractText"=>"",
  "Type"=>"E"}
