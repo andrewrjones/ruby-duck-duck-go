@@ -1,3 +1,6 @@
+1.1.2 03-05-2012
+  - Fix for URI parsing exceptions InvalidURIError [Chris Nicola - https://github.com/lucisferre]
+
 1.1.1 03-12-2011
   - Fix live tests after DDG results changed
 
