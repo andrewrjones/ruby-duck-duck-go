@@ -39,6 +39,6 @@ API and design heavily influenced by WWW::DuckDuckGo[http://search.cpan.org/~get
 
 = Copyright and License
 
-Copyright (c) 2011 Andrew Jones (http://andrew-jones.com)
+Copyright (c) 2012 Andrew Jones (http://andrew-jones.com)
 
 This code is available under the MIT License. See the LICENSE file for more details.
