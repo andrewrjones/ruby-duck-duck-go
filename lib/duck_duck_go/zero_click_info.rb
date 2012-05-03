@@ -42,14 +42,14 @@ module DuckDuckGo
       abstract = result['Abstract'] unless result['Abstract'].empty?
       abstract_text = result['AbstractText'] unless result['AbstractText'].empty?
       abstract_source = result['AbstractSource'] unless result['AbstractSource'].empty?
-      abstract_url = URI.parse(result['AbstractURL']) unless result['AbstractURL'].empty?
-      image = URI.parse(result['Image']) unless result['Image'].empty?
+      abstract_url = URI.parse(URI.escape(result['AbstractURL'])) unless result['AbstractURL'].empty?
+      image = URI.parse(URI.escape(result['Image'])) unless result['Image'].empty?
       heading = result['Heading'] unless result['Heading'].empty?
       answer = result['Answer'] unless result['Answer'].empty?
       answer_type = result['AnswerType'] unless result['AnswerType'].empty?
       definition = result['Definition'] unless result['Definition'].empty?
       definition_source = result['DefinitionSource'] unless result['DefinitionSource'].empty?
-      definition_url = URI.parse(result['DefinitionURL']) unless result['DefinitionURL'].empty?
+      definition_url = URI.parse(URI.escape(result['DefinitionURL'])) unless result['DefinitionURL'].empty?
       type = result['Type'] unless result['Type'].empty?
       
       if result['Results']
