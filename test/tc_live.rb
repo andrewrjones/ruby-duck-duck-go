@@ -6,14 +6,14 @@ require 'duck_duck_go/zero_click_info'
 
 class TestLive < Test::Unit::TestCase
   
-  # test a live search for 'stephen fry'
+  # test a live search for 'jack wilshere'
   def test_live
     
     ddg = DuckDuckGo.new(nil, false)
-    zci = ddg.zci('kelly jones')
+    zci = ddg.zci('jack wilshere')
 
     assert_instance_of(DuckDuckGo::ZeroClickInfo, zci)
-    assert_equal("Kelly Jones", zci.heading)
+    assert_equal("Jack Wilshere", zci.heading)
     assert_equal("Wikipedia", zci.abstract_source)
     assert_equal("A", zci.type)
   end
@@ -22,10 +22,10 @@ class TestLive < Test::Unit::TestCase
   def test_live_http
     
     ddg = DuckDuckGo.new(nil, true)
-    zci = ddg.zci('kelly jones')
+    zci = ddg.zci('jack wilshere')
 
     assert_instance_of(DuckDuckGo::ZeroClickInfo, zci)
-    assert_equal("Kelly Jones", zci.heading)
+    assert_equal("Jack Wilshere", zci.heading)
     assert_equal("Wikipedia", zci.abstract_source)
     assert_equal("A", zci.type)
   end
