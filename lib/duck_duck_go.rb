@@ -36,7 +36,8 @@ module DuckDuckGo
     def zeroclickinfo(query, skip_disambiguation = false)
       args = {
         'q' => query,
-        'o' => 'json'
+        'o' => 'json',
+        'no_redirect' => 1
       }
       if(skip_disambiguation)
         args['d'] = 1
