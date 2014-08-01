@@ -172,6 +172,7 @@ class TestZCI < Test::Unit::TestCase
     "FirstURL"=>"http://duckduckgo.com/c/English_comedians"}],
  "AbstractURL"=>"http://en.wikipedia.org/wiki/Stephen_Fry",
  "Image"=>"http://i.duck.co/i/72880df1.jpg",
+ "Redirect"=>"",
  "DefinitionURL"=>"",
  "DefinitionSource"=>"",
  "AbstractText"=>
@@ -194,6 +195,7 @@ class TestZCI < Test::Unit::TestCase
     assert_nil(zci.answer)
     assert_instance_of(URI::HTTP, zci.abstract_url)
     assert_equal('en.wikipedia.org', zci.abstract_url.host)
+    assert_nil(zci.redirect)
     assert_equal(2, zci.results.size)
     assert_equal("Official site", zci.results[0].text)
     assert_equal(1, zci.related_topics.size)
@@ -453,6 +455,7 @@ class TestZCI < Test::Unit::TestCase
        "FirstURL"=>"http://duckduckgo.com/The_Apple_Tree"}]}],
  "AbstractURL"=>"http://en.wikipedia.org/wiki/Apple_(disambiguation)",
  "Image"=>"",
+ "Redirect"=>"",
  "DefinitionURL"=>
   "http://www.thefreedictionary.com/_/search.aspx?pid=aff18&word=apple",
  "DefinitionSource"=>"TheFreeDictionary",
@@ -475,6 +478,7 @@ class TestZCI < Test::Unit::TestCase
     assert_nil(zci.answer)
     assert_instance_of(URI::HTTP, zci.abstract_url)
     assert_equal('en.wikipedia.org', zci.abstract_url.host)
+    assert_nil(zci.redirect)
     assert_equal(0, zci.results.size)
     assert_equal(10, zci.related_topics.size)
     assert_equal(1, zci.related_topics["_"].size)
@@ -754,6 +758,7 @@ class TestZCI < Test::Unit::TestCase
     "FirstURL"=>"http://duckduckgo.com/Waylon_Smithers"}],
  "AbstractURL"=>"http://en.wikipedia.org/wiki/The_Simpsons_characters",
  "Image"=>"",
+ "Redirect"=>"",
  "DefinitionURL"=>"",
  "DefinitionSource"=>"",
  "AbstractText"=>"",
@@ -773,6 +778,7 @@ class TestZCI < Test::Unit::TestCase
     assert_nil(zci.answer)
     assert_instance_of(URI::HTTP, zci.abstract_url)
     assert_equal('en.wikipedia.org', zci.abstract_url.host)
+    assert_nil(zci.redirect)
     assert_equal(0, zci.results.size)
     assert_equal(1, zci.related_topics.size)
     assert_equal(43, zci.related_topics["_"].size)
@@ -798,6 +804,7 @@ class TestZCI < Test::Unit::TestCase
  "RelatedTopics"=>[],
  "AbstractURL"=>"http://en.wikipedia.org/wiki/Lorem_Ipsum",
  "Image"=>"",
+ "Redirect"=>"",
  "DefinitionURL"=>
   "http://www.merriam-webster.com/dictionary/lorem ipsum",
  "DefinitionSource"=>"TheFreeDictionary",
@@ -819,7 +826,51 @@ class TestZCI < Test::Unit::TestCase
     assert_nil(zci.answer)
     assert_instance_of(URI::HTTP, zci.abstract_url)
     assert_equal('en.wikipedia.org', zci.abstract_url.host)
+    assert_nil(zci.redirect)
     assert_equal(1, zci.results.size)
     assert_equal(0, zci.related_topics.size)
   end
+  
+  def test_zci_redirect
+    
+    data = {"DefinitionSource"=>"",
+ "Heading"=>"",
+ "ImageWidth"=>0,
+ "RelatedTopics"=>[],
+ "Type"=>"E",
+ "Redirect"=>"https://en.wikipedia.org/wiki/Special:Search?search=stephen%20fry&go=Go",
+ "DefinitionURL"=>"",
+ "AbstractURL"=>"",
+ "Definition"=>"",
+ "AbstractSource"=>"",
+ "Infobox"=>"",
+ "Image"=>"",
+ "ImageIsLogo"=>0,
+ "Abstract"=>"",
+ "AbstractText"=>"",
+ "AnswerType"=>"",
+ "ImageHeight"=>0,
+ "Results"=>[],
+ "Answer"=>""}
+ 
+    zci = DuckDuckGo::ZeroClickInfo.by(data)
+    
+    assert_nil(zci.heading)
+    assert_nil(zci.abstract_source)
+    assert_nil(zci.image)
+    assert_nil(zci.abstract_text)
+    assert_nil(zci.definition_source)
+    assert_nil(zci.definition)
+    assert_nil(zci.definition_url)
+    assert_nil(zci.answer_type)
+    assert_equal("E", zci.type)
+    assert_equal("exclusive", zci.type_long)
+    assert_nil(zci.answer)
+    assert_nil(zci.abstract_url)
+    assert_instance_of(URI::HTTPS, zci.redirect)
+    assert_equal('en.wikipedia.org', zci.redirect.host)
+    assert_equal(0, zci.results.size)
+    assert_equal(0, zci.related_topics.size)
+  end
+
 end
