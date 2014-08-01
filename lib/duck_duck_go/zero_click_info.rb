@@ -52,7 +52,7 @@ module DuckDuckGo
       definition_source = result['DefinitionSource'] unless result['DefinitionSource'].empty?
       definition_url = URI.parse(URI.escape(result['DefinitionURL'])) unless result['DefinitionURL'].empty?
       type = result['Type'] unless result['Type'].empty?
-      redirect = result['Redirect'] unless result['Redirect'].empty?
+      redirect = URI.parse(URI.escape(result['Redirect'])) unless result['Redirect'].empty?
       
       if result['Results']
         results = Array.new
