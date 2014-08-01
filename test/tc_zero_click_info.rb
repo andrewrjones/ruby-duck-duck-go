@@ -866,7 +866,7 @@ class TestZCI < Test::Unit::TestCase
     assert_equal("E", zci.type)
     assert_equal("exclusive", zci.type_long)
     assert_nil(zci.answer)
-    assert_nil(ci.abstract_url)
+    assert_nil(zci.abstract_url)
     assert_instance_of(URI::HTTP, zci.redirect)
     assert_equal('en.wikipedia.org', zci.redirect.host)
     assert_equal(0, zci.results.size)
